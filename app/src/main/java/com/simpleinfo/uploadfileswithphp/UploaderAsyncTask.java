@@ -14,11 +14,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 
 public class UploaderAsyncTask extends AsyncTask<String,String,String> {
 
-    private static String URL = "http://192.168.43.202/upload_receiver.php";
+    private final static String TAG = "UploaderAsyncTask";
+    private final static String URL = "http://192.168.43.202/upload_receiver.php";
 
     OkHttpClient mClient;
     List<Data> mDatas;
@@ -73,10 +75,14 @@ public class UploaderAsyncTask extends AsyncTask<String,String,String> {
                     mCustomProgressListener.onError("Failed to upload with error code "+response.code(),data);
                 }
 
-                Log.e("response",response.body().string());
+
+                ResponseBody responseBodyCopy = response.peekBody(Long.MAX_VALUE);
+
                 /**
-                 * success to upload
+                 * server response
                  */
+                Log.e(TAG,responseBodyCopy.string());
+
 
             } catch (IOException e) {
 

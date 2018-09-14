@@ -298,7 +298,7 @@ public class MainActivity extends AppCompatActivity {
                     mPopupOfProgress.mOverallProgress.setProgress(totalFileAttempToUploaded);
                     mPopupOfProgress.mOverallProgress.setMax(totalFileToUpload);
                     mPopupOfProgress.mFileNameTextView.setText(data.getImageName());
-                    mPopupOfProgress.mPerFileProgressTextview.setText(String.format("%.2f",percentageUpload)+"");
+                    mPopupOfProgress.mPerFileProgressTextview.setText(String.format("%.2f",percentageUpload)+" %");
                     mPopupOfProgress.mOverallProgressTextView.setText(totalFileAttempToUploaded +"/"+totalFileToUpload);
                 }
             });
